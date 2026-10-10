@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- OData 서비스 설명서 ($metadata). 실제 SAP 서버라면 서버가 자동으로 내려준다. -->
+<edmx:Edmx Version="1.0"
+	xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+	xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZHW_PRODUCT_SRV" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+
+			<!-- 제품 (= 테이블 / VO) -->
+			<EntityType Name="Product">
+				<Key><PropertyRef Name="ProductID"/></Key>
+				<Property Name="ProductID" Type="Edm.String" MaxLength="10" Nullable="false" sap:label="ID" sap:filterable="false"/>
+				<Property Name="Name" Type="Edm.String" MaxLength="40" sap:label="제품명"/>
+				<Property Name="Category" Type="Edm.String" MaxLength="20" sap:label="카테고리" sap:value-list="fixed-values"/>
+				<Property Name="Price" Type="Edm.Int32" sap:label="가격" sap:filterable="false"/>
+			</EntityType>
+
+			<!-- 카테고리 (= 공통코드 테이블) -->
+			<EntityType Name="Category">
+				<Key><PropertyRef Name="CategoryID"/></Key>
+				<Property Name="CategoryID" Type="Edm.String" MaxLength="20" Nullable="false" sap:label="카테고리"/>
+			</EntityType>
+
+			<EntityContainer Name="ZHW_PRODUCT_SRV_Entities" m:IsDefaultEntityContainer="true">
+				<EntitySet Name="Products" EntityType="ZHW_PRODUCT_SRV.Product"/>
+				<EntitySet Name="Categories" EntityType="ZHW_PRODUCT_SRV.Category"/>
+			</EntityContainer>
+
+			<!-- 카테고리 필터를 드롭다운으로: 선택지는 Categories 의 CategoryID -->
+			<Annotations Target="ZHW_PRODUCT_SRV.Product/Category" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="CollectionPath" String="Categories"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="Category"/>
+									<PropertyValue Property="ValueListProperty" String="CategoryID"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

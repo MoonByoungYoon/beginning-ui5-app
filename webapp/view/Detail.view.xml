@@ -1,0 +1,25 @@
+<mvc:View
+	controllerName="hw.products.controller.Detail"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form">
+	<Page title="간식 상세" showNavButton="true" navButtonPress=".onNavBack">
+		<headerContent>
+			<Button text="수정" type="Emphasized" press=".onEdit"/>
+			<Button text="삭제" type="Reject" press=".onDelete"/>
+		</headerContent>
+		<content>
+			<!-- 상대 경로({product>Name})는 컨트롤러가 bindElement 로 지정한 제품 한 건 기준 -->
+			<f:SimpleForm layout="ResponsiveGridLayout">
+				<Label text="ID"/>
+				<Text text="{product>ProductID}"/>
+				<Label text="제품명"/>
+				<Text text="{product>Name}"/>
+				<Label text="카테고리"/>
+				<Text text="{product>Category}"/>
+				<Label text="가격"/>
+				<Text text="{product>Price}원"/>
+			</f:SimpleForm>
+		</content>
+	</Page>
+</mvc:View>

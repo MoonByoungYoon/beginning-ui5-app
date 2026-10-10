@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form">
+	<!-- 컨트롤러가 없는 화면 조각. press 는 불러온 쪽(Detail) 컨트롤러의 함수를 부른다. -->
+	<!-- 원본(product)이 아닌 복사본(edit)에 바인딩 → 취소하면 아무것도 안 바뀜 -->
+	<Dialog id="editDialog" title="간식 수정">
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout">
+			<Label text="제품명"/>
+			<Input value="{edit>/Name}"/>
+			<Label text="카테고리"/>
+			<Select selectedKey="{edit>/Category}" items="{product>/Categories}">
+				<core:Item key="{product>CategoryID}" text="{product>CategoryID}"/>
+			</Select>
+			<Label text="가격"/>
+			<Input value="{edit>/Price}" type="Number"/>
+		</f:SimpleForm>
+		<beginButton>
+			<Button text="저장" type="Emphasized" press=".onSaveEdit"/>
+		</beginButton>
+		<endButton>
+			<Button text="취소" press=".onCancelEdit"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

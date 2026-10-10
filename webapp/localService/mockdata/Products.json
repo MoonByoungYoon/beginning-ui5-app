@@ -1,0 +1,8 @@
+[
+	{ "ProductID": "P001", "Name": "딸기 우유", "Category": "음료", "Price": 1500 },
+	{ "ProductID": "P002", "Name": "바나나 우유", "Category": "음료", "Price": 1500 },
+	{ "ProductID": "P003", "Name": "초코 쿠키", "Category": "과자", "Price": 2000 },
+	{ "ProductID": "P004", "Name": "감자칩", "Category": "과자", "Price": 1800 },
+	{ "ProductID": "P005", "Name": "딸기 케이크", "Category": "빵", "Price": 4500 },
+	{ "ProductID": "P006", "Name": "크림빵", "Category": "빵", "Price": 1200 }
+]

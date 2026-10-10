@@ -1,0 +1,13 @@
+{
+  "name": "beginning-ui5-app",
+  "version": "1.0.0",
+  "description": "UI5 앱: 간식 가게 (SAPUI5 + JSON 더미 데이터 + MockServer)",
+  "private": true,
+  "scripts": {
+    "start": "ui5 serve --port 8081 --open index.html",
+    "build": "ui5 build --clean-dest"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^4.0.0"
+  }
+}

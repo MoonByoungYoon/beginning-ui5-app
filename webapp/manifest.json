@@ -1,0 +1,46 @@
+{
+	"_version": "1.65.0",
+	"sap.app": {
+		"id": "hw.products",
+		"type": "application",
+		"title": "간식 가게",
+		"applicationVersion": { "version": "1.0.0" },
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZHW_PRODUCT_SRV/",
+				"type": "OData",
+				"settings": { "odataVersion": "2.0" }
+			}
+		}
+	},
+	"sap.ui5": {
+		"rootView": { "viewName": "hw.products.view.App", "type": "XML" },
+		"dependencies": {
+			"minUI5Version": "1.136.0",
+			"libs": { "sap.m": {}, "sap.ui.layout": {}, "sap.ui.comp": {} }
+		},
+		"models": {
+			"": { "dataSource": "mainService", "settings": { "useBatch": false } },
+			"product": { "type": "sap.ui.model.json.JSONModel" }
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"type": "View",
+				"viewType": "XML",
+				"path": "hw.products.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true
+			},
+			"routes": [
+				{ "pattern": "", "name": "list", "target": "list" },
+				{ "pattern": "products/{productId}", "name": "detail", "target": "detail" }
+			],
+			"targets": {
+				"list": { "name": "List", "level": 1 },
+				"detail": { "name": "Detail", "level": 2 }
+			}
+		}
+	}
+}

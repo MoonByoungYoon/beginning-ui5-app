@@ -1,0 +1,4 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" displayBlock="true">
+	<!-- 페이지를 담는 그릇. 라우터가 List / Detail 페이지를 여기에 넣었다 뺐다 한다. -->
+	<App id="app"/>
+</mvc:View>

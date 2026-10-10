@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>간식 가게</title>
+	<!-- UI5 라이브러리 로드 후, 아래 div 자리에 hw.products 앱(Component.js)을 띄운다 -->
+	<script
+		id="sap-ui-bootstrap"
+		src="resources/sap-ui-core.js"
+		data-sap-ui-theme="sap_horizon"
+		data-sap-ui-language="ko"
+		data-sap-ui-resource-roots='{ "hw.products": "./" }'
+		data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
+		data-sap-ui-compat-version="edge"
+		data-sap-ui-async="true">
+	</script>
+</head>
+<body class="sapUiBody">
+	<div data-sap-ui-component data-name="hw.products" data-height="100%"></div>
+</body>
+</html>
